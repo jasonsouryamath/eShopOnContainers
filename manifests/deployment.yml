@@ -1,26 +1,20 @@
-apiVersion : apps/v1
+--- 
+apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: jasonsouryamatheshoponcontainers 
-spec:
+metadata: 
+  name: jasonsouryamatheshoponcontainers
+spec: 
   replicas: 1
-  selector:
-    matchLabels:
+  selector: 
+    matchLabels: 
       app: jasonsouryamatheshoponcontainers
-  template:
-    metadata:
-      labels:
-        app: jasonsouryamatheshoponcontainers 
-    spec:
-     initContainers:
-        - name: set-vm-max-map-count
-          image: busybox
-          imagePullPolicy: IfNotPresent
-          command: ['sysctl', '-w', 'vm.max_map_count=262144']
-          securityContext:
-            privileged: true
-          containers:
-          - name: jasonsouryamatheshoponcontainers 
-            image: devtestcc.azurecr.io/jasonsouryamatheshoponcontainers
-          ports:
+  template: 
+    metadata: 
+      labels: 
+        app: jasonsouryamatheshoponcontainers
+    spec: 
+      containers: 
+        - image: devtestcc.azurecr.io/jasonsouryamatheshoponcontainers
+          name: jasonsouryamatheshoponcontainers
+          ports: ~
         - containerPort: 80
