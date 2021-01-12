@@ -15,5 +15,6 @@ spec:
       containers:
         - name: jasonsouryamatheshoponcontainers 
           image: devtestcc.azurecr.io/jasonsouryamatheshoponcontainers
+          command: ['sh', '-c', 'sysctl -w vm.max_map_count=262144']
           ports:
           - containerPort: 80
